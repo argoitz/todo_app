@@ -1,14 +1,14 @@
 
 function TaskBottom(props){
     console.log(props.tasks);
-    let completedTasks = props.tasks.filter(t => !t.completed);
+    let completedTasks = props.tasks.filter(t => !t.completed).length;
     return (
         <div className="taskBottom">
             <div className="LBox">
-                <b>{completedTasks.length}</b> Tasks left
+                <b>{completedTasks}</b> Tasks left
             </div>
             <div className="RBox">
-                <a>Load more</a>
+                <a href="#">Load more</a>
             </div>
         </div>
     )

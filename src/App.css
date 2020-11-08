@@ -7,7 +7,6 @@ body{
   width: 40%;
 }
 .todoBox{
-  margin-top: 20vh;
   display: flex;
   flex-direction: column;
 }
@@ -26,6 +25,14 @@ body{
   margin-bottom:20px;
 }
 
+.warningMessage{
+  color:000;
+  font-weight: bold;
+  text-align: center;
+  background-color: salmon;
+  border: 2px solid red;
+}
+
 .todoBox input[type=text]:focus {
   outline: none;
 }
@@ -38,7 +45,7 @@ body{
 }
 
 .todoBox li{
-  padding: 20px 0;
+  padding: 10px 0;
   border-bottom: 2px solid #DDD;
 }
 
