@@ -17,7 +17,7 @@ function App() {
   const numOfTasks = tasks.length;
   const [page, setPage] = React.useState(0);
   const pages = Math.ceil(numOfTasks / 10);
-  const pageSize = 4;
+  const [pageSize, setPageSize] = React.useState(4);
 
   console.log(getTasks(tasks,page,pageSize));
 
@@ -35,6 +35,12 @@ function App() {
     <div className="todoBox">
       <h2>What do you want to do today?</h2>
       <input type="text"></input>
+      <select onChange={(e) => setPageSize(e.target.value)}>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
       <TaskOverWorkWarning tasks={tasks}/>
       <TaskList tasks={getTasks(tasks,page,pageSize)}/>
       <TaskBottom tasks={tasks}/>
