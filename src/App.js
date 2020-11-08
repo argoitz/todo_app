@@ -16,8 +16,8 @@ function App() {
   const tasks = data.tasks;
   const numOfTasks = tasks.length;
   const [page, setPage] = React.useState(0);
-  const pages = Math.ceil(numOfTasks / 10);
   const [pageSize, setPageSize] = React.useState(4);
+  const pages = Math.ceil((numOfTasks / pageSize) - 1);
 
   console.log(getTasks(tasks,page,pageSize));
 
