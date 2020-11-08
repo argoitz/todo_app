@@ -53,6 +53,18 @@ body{
   margin-right: 5%;
 }
 
+.todoBox li span{
+  float: right;
+}
+
+.todoBox li img{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  float: right;
+  margin-left: 20px;
+}
+
 .doneTask{
   text-decoration: line-through;
 }
