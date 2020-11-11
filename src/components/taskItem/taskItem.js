@@ -1,3 +1,5 @@
+import './taskItem.scss';
+
 function TaskItem(props){
     return (
         <li className={ props.completed ? 'doneTask': '' }>

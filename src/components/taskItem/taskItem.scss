@@ -1,0 +1,26 @@
+.todoBox{
+    ul{
+        li{
+            input[type="checkbox"]{
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                vertical-align: middle;
+                border: 1px solid #666;
+                -webkit-appearance: none;
+                outline: none;
+                cursor: pointer;
+            }
+            input[type="checkbox"]:checked {
+                background-color: #69d369;
+                border: 1px solid #69d369;
+
+            }
+            input:checked + label{
+                text-decoration: line-through;
+                color:#666;
+                opacity: .4;
+            }
+        }
+    }
+}

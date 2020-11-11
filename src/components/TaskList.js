@@ -1,4 +1,4 @@
-import TaskItem from './taskItems';
+import TaskItem from './taskItem/taskItem';
 
 
 function TaskList( {tasks} ){

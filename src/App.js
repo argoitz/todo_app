@@ -1,40 +1,22 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import LikeButton from './components/LikeButton';
+import { Header, handleAddInputKeyPress } from './components/Header/Header';
 import TaskList from './components/TaskList';
 import TaskBottom from './components/TaskBottom';
 import TaskOverWorkWarning from './components/TaskOverWorkWarning';
-import data from './taskObject.json';
+import useTasks from './custom-hooks/useTasks';
 
 const getTasks = (tasks, page, pageSize) => {
   return tasks.slice(page*pageSize, (page + 1)*pageSize);
 }
 
 function App() {
-
-  const tasks = data.tasks;
-  const numOfTasks = tasks.length;
-  const [page, setPage] = React.useState(0);
-  const [pageSize, setPageSize] = React.useState(4);
-  const pages = Math.ceil((numOfTasks / pageSize) - 1);
-
-  console.log(getTasks(tasks,page,pageSize));
-
-  const handleClick = () => {
-    console.log("CLICKED");
-  }
+  const [tasks, numOfTasks, page, setPage, pageSize, setPageSize, pages] = useTasks();
   
-  /*
-    - task Who (nombre, foto de la persona) e imprimir esta foto y nombre en los items
-    - Overword warning: add aviso si tenemos más de 5 tareas por hacer
-    - "Paginación estática" task una lista larga y tendremos una variable para controlar las tareas q vemos "const page = 1";
-  */
-
   return (
     <div className="todoBox">
-      <h2>What do you want to do today?</h2>
-      <input type="text"></input>
+      <Header/>
       <select onChange={(e) => setPageSize(e.target.value)}>
         <option value="5">5</option>
         <option value="10">10</option>
