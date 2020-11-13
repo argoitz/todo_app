@@ -1,0 +1,29 @@
+.todoBox{
+    ul, li{
+        display: block;
+    }
+    
+    ul{
+        padding-left: 0px;
+    }
+
+    li{
+        padding: 10px 0;
+        border-bottom: 2px solid #DDD;
+        
+        input[type="checkbox"]{
+            margin-right: 5%;
+        }
+        span{
+            float: right;
+        }
+
+        img{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            float: right;
+            margin-left: 20px;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+.taskBottom{
+    display: flex;
+    margin-top:20px;
+    
+    .RBox{
+      margin-left: auto;
+      color:#000;
+      text-decoration: underline;
+    }
+}
+  
+.pagination_box{
+    margin-top:20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    button{
+      border-radius: 5px;
+      border:2px solid #333;
+      background-color: #EEE;
+      font-weight: bold;
+    }
+}
+  
+  

@@ -1,3 +1,4 @@
+import './Footer.scss';
 
 function Footer({tasks, pagination}){
     let completedTasks = tasks.fullTasks.filter(t => !t.completed).length;
