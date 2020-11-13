@@ -6,8 +6,6 @@ import Footer from './components/Footer/Footer';
 import TaskOverWorkWarning from './components/TaskList/TaskOverWorkWarning/TaskOverWorkWarning';
 import useTasks from './custom-hooks/useTasks';
 
-
-
 function App() {
   const {tasks, pagination} = useTasks();
 
