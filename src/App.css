@@ -6,10 +6,21 @@ body{
 #root{
   width: 40%;
 }
-.todoBox{
+
+.Header{
   display: flex;
   flex-direction: column;
 }
+
+.pageSizeBox{
+  display: flex;
+  margin-bottom: 10px;
+}
+.pageSizeBox label{
+  margin-left: auto;
+  margin-right: 5px;
+}
+
 
 .todoBox h2{
   text-align: center;
@@ -76,4 +87,19 @@ body{
   margin-left: auto;
   color:#000;
   text-decoration: underline;
+}
+
+
+.pagination_box{
+  margin-top:20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pagination_box button{
+  border-radius: 5px;
+  border:2px solid #333;
+  background-color: #EEE;
+  font-weight: bold;
 }

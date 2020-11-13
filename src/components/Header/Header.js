@@ -1,25 +1,32 @@
-import useTasks from '../../custom-hooks/useTasks';
-
-
-let handleAddInputKeyPress = (e) => {
+const handleAddInputKeyPress = (e, tasks, setTaskToAdd) => {
   if(e.key === 'Enter'){
-    console.log(e.target.value);
+    let newTask = {title: e.target.value, completed: false, who: "Me"};
+    setTaskToAdd(newTask);
+    e.target.value = "";
   }
 }
 
-let handleSearchKeyPress = (e) => {
-  console.log(e.target.value);
+let handleSearchKeyPress = (e, setSearch) => {
+  if(e.code === 'Enter'){
+    setSearch(e.target.value);
+  }
 }
 
-const Header = () => {
-  const [tasks, numOfTasks, page, setPage, pageSize, setPageSize, pages] = useTasks();
+const Header = ({tasks, pagination}) => {
   return (
       <>
         <h2>What do you want to do today?</h2>
-        <div>
-          <input className="addInput" type="text" onKeyPress={handleAddInputKeyPress} placeholder="Perss'Enter' to add task"></input>
-          <input className="searchInput" type="text" onKeyPress={handleSearchKeyPress} placeholder="Search"></input>
-          
+
+        <div className="Header">
+          <input className="addInput" type="text" onKeyPress={(e) =>  handleAddInputKeyPress(e, tasks.fullTasks, tasks.setTaskToAdd) }  placeholder="Perss'Enter' to add task"></input>
+          <input className="searchInput" type="text" placeholder="Search" onKeyPress={(e) => handleSearchKeyPress(e, tasks.setSearch) } ></input>
+        </div>
+
+        <div className="pageSizeBox">
+          <label>Page Size</label>
+          <select onChange={(e) => {pagination.setPageSize(e.target.value); pagination.setPage(0)}}>
+            {pagination.pageListSize.map((x) => <option value={x}>{x}</option> )}
+          </select>
         </div>
       </>
     )

@@ -1,13 +1,19 @@
 import './taskItem.scss';
 
-function TaskItem(props){
+const changeTaskCompletedStatus = (e, index, taskObj) => {
+    let tasks = taskObj.fullTasks;
+    console.log(e.target.checked);
+    taskObj.setCheckTask(index);
+};
+
+function TaskItem({task, index, taskObj}){
     return (
-        <li className={ props.completed ? 'doneTask': '' }>
-            <input type="checkbox" defaultChecked="false" checked={ props.completed }></input>
+        <li>
+            <input type="checkbox" defaultChecked="false" checked={ task.completed } onChange={(e) => changeTaskCompletedStatus(e, index,taskObj)}></input>
             <label>
-                {props.title} 
-                {props.img? <img src={props.img}></img> : undefined }
-                {props.who? <span>{props.who}</span> : undefined } 
+                {task.title} 
+                {task.img? <img src={task.img}></img> : undefined }
+                {task.who? <span>{task.who}</span> : undefined } 
             </label>
         </li>
     )

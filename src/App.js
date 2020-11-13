@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Header, handleAddInputKeyPress } from './components/Header/Header';
 import TaskList from './components/TaskList';
-import TaskBottom from './components/TaskBottom';
+import Footer from './components/footer';
 import TaskOverWorkWarning from './components/TaskOverWorkWarning';
 import useTasks from './custom-hooks/useTasks';
 
@@ -12,25 +12,15 @@ const getTasks = (tasks, page, pageSize) => {
 }
 
 function App() {
-  const [tasks, numOfTasks, page, setPage, pageSize, setPageSize, pages] = useTasks();
+  const {tasks, pagination} = useTasks();
   
+
   return (
     <div className="todoBox">
-      <Header/>
-      <select onChange={(e) => setPageSize(e.target.value)}>
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="15">15</option>
-        <option value="20">20</option>
-      </select>
-      <TaskOverWorkWarning tasks={tasks}/>
-      <TaskList tasks={getTasks(tasks,page,pageSize)}/>
-      <TaskBottom tasks={tasks}/>
-
-      <div className="buttonBox">
-        {page > 0 && <button onClick={() => setPage(page - 1)}>Prev Page</button>}
-        {page < pages && <button onClick={() => setPage(page + 1)}>Next Page</button>}
-      </div>
+      <Header tasks= {tasks} pagination={pagination}/>
+      <TaskOverWorkWarning tasks={tasks.fullTasks}/>
+      <TaskList tasks={getTasks(tasks.filteredTasks,pagination.page,pagination.pageSize)} taskObj={tasks}/>
+      <Footer tasks={tasks} pagination={pagination}/>
     </div>
   );
 }
