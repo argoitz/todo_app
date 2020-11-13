@@ -12,9 +12,7 @@ const useTasks = () => {
     //Erro 2: If i add "setTaskToAdd('')" 2 tasks are add to tje tasks object
     const [taskToAdd, setTaskToAdd] = useState('');
     if(taskToAdd !== ''){
-        console.log("ADDing task");
-        tasks.splice(0,0,taskToAdd);
-        setTasks(tasks);
+        setTasks([taskToAdd, ...tasks]);
         setTaskToAdd('');
     }
 
