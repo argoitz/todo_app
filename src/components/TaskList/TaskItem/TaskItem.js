@@ -1,4 +1,4 @@
-import './taskItem.scss';
+import './TaskItem.scss';
 
 const changeTaskCompletedStatus = (e, index, taskObj) => {
     let tasks = taskObj.fullTasks;

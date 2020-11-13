@@ -1,0 +1,28 @@
+h2{
+    text-align: center;
+}
+
+.Header{
+    display: flex;
+    flex-direction: column;
+
+    input[type=text]{
+        align-self: center;
+        width: 40%;
+        padding:1%;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        margin-bottom:20px;
+    }
+}
+  
+.pageSizeBox{
+    display: flex;
+    margin-bottom: 10px;
+    label{
+        margin-left: auto;
+        margin-right: 5px;
+    }
+}
+  

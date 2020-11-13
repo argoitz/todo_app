@@ -5,6 +5,8 @@ const useTasks = () => {
     console.log("Recorriendo script");
     const [tasks, setTasks] = useState(data.tasks);
 
+    const getTasks = (tasks, page, pageSize) => tasks.slice(page*pageSize, (page + 1)*pageSize);
+      
     //I addobject of new task to add to taskToAdd and splice to add in first position 
     //Error 1: When I add this task if i dont write "setTaskToAdd('')", the script loops adding same task
     //Erro 2: If i add "setTaskToAdd('')" 2 tasks are add to tje tasks object
@@ -15,7 +17,7 @@ const useTasks = () => {
         setTasks(tasks);
         setTaskToAdd('');
     }
-    
+
     //Try to change completed status of task (I add key of tasks objet to checkTask and then I try to change the status )
     //Error: Not working
     const [checkTask, setCheckTask] = useState(false);
@@ -38,8 +40,10 @@ const useTasks = () => {
         tasks : {
             numOfTasks,
             fullTasks : tasks,
+            getTasks,
             filteredTasks,
             setTaskToAdd,
+            search,
             setSearch,
             setCheckTask
         },

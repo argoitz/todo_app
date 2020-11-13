@@ -1,4 +1,5 @@
-import TaskItem from './taskItem/taskItem';
+import TaskItem from './TaskItem/TaskItem';
+import './TaskList.scss';
 
 
 function TaskList( {tasks, taskObj} ){
