@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import { Header } from './components/Header/Header';
-import TaskList from './components/TaskList/TaskList';
+import TaskList from './components/Body/TaskList';
 import Footer from './components/Footer/Footer';
-import TaskOverWorkWarning from './components/TaskList/TaskOverWorkWarning/TaskOverWorkWarning';
+import TaskOverWorkWarning from './components/Body/TaskOverWorkWarning/TaskOverWorkWarning';
 import useTasks from './custom-hooks/useTasks';
 
 function App() {
