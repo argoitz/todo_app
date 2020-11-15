@@ -13,7 +13,7 @@ function App() {
     <div className="todoBox">
       <Header tasks= {tasks} pagination={pagination}/>
       <TaskOverWorkWarning tasks={tasks.fullTasks}/>
-      <TaskList tasks={tasks.getTasks(tasks.filteredTasks,pagination.page,pagination.pageSize)} taskObj={tasks}/>
+      <TaskList tasks={tasks.pageTasks} taskObj={tasks}/>
       <Footer tasks={tasks} pagination={pagination}/>
     </div>
   );
