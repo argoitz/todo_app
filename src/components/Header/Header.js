@@ -1,9 +1,9 @@
 import './Header.scss';
 
-const handleAddInputKeyPress = (e, setTaskToAdd) => {
+const handleAddInputKeyPress = (e, setTasks, tasks) => {
   if(e.key === 'Enter'){
-    let newTask = {title: e.target.value, completed: false, who: "Me"};
-    setTaskToAdd(newTask);
+    let taskToAdd = {title: e.target.value, completed: false, who: "Me", id: Math.round(Math.random()*10000000)};
+    setTasks([taskToAdd, ...tasks]);
     e.target.value = "";
   }
 }
@@ -21,7 +21,7 @@ const Header = ({tasks, pagination}) => {
         <h2>What do you want to do today?</h2>
 
         <div className="Header">
-          <input className="addInput" type="text" onKeyPress={(e) =>  handleAddInputKeyPress(e, tasks.setTaskToAdd) }  placeholder="Perss'Enter' to add task"></input>
+          <input className="addInput" type="text" onKeyPress={(e) =>  handleAddInputKeyPress(e, tasks.setTasks, tasks.fullTasks) }  placeholder="Perss'Enter' to add task"></input>
           <input className="searchInput" type="text" placeholder="Search" onKeyPress={(e) => handleSearchKeyPress(e, tasks.setSearch) } ></input>
         </div>
         

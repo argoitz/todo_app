@@ -1,15 +1,17 @@
 import './TaskItem.scss';
 
-const changeTaskCompletedStatus = (e, index, taskObj) => {
+const changeTaskCompletedStatus = (e, id, taskObj) => {
     let tasks = taskObj.fullTasks;
-    console.log(e.target.checked);
-    taskObj.setCheckTask(index);
+    console.log(tasks);
+    const thisTaskInState = tasks.find(task => task.id === id);
+    thisTaskInState.completed = !thisTaskInState.completed;
+    taskObj.setTasks([...tasks]);
 };
 
 function TaskItem({task, index, taskObj}){
     return (
         <li>
-            <input type="checkbox" defaultChecked="false" checked={ task.completed } onChange={(e) => changeTaskCompletedStatus(e, index,taskObj)}></input>
+            <input type="checkbox" defaultChecked="false" checked={ task.completed } onChange={(e) => changeTaskCompletedStatus(e, task.id,taskObj)}></input>
             <label>
                 {task.title} 
                 {task.img? <img src={task.img}></img> : undefined }
