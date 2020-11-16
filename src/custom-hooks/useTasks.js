@@ -38,10 +38,8 @@ const useTasks = () => {
             fullTasks : tasks,
             pageTasks: getTasks(tasks, page, pageSize),
             filteredTasks,
-            setTaskToAdd,
             search,
             setSearch,
-            setCheckTask
         },
         pagination: {
             page,
