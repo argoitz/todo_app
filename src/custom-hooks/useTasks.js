@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import data from '../taskObject.json';
 
 const getTasks = (tasks, page, pageSize) => tasks.slice(page*pageSize, (page + 1)*pageSize);
@@ -9,7 +9,25 @@ const useTasks = () => {
 
     const getTasks = (tasks, page, pageSize) => tasks.slice(page*pageSize, (page + 1)*pageSize);
         
-    const [search, setSearch] = useState('');
+    //Store searching word in localStorage
+    const useLocalStorageSearch = (defaultVal, key) => {
+        //check if localStorage key exist and get value or set default value
+        const [val, setVal] = useState(() => {
+            const localValue = window.localStorage.getItem(key);
+            return localValue !== null? JSON.parse(localValue) : defaultVal
+        });
+
+        //If new word is set, store in localStorage
+        useEffect(() => {
+            window.localStorage.setItem(key, JSON.stringify(val));
+        }, [key, val]);
+
+        return [val, setVal];
+    };
+    
+    const [search, setSearch] = useLocalStorageSearch('', 'search');
+
+
     const filteredTasks = tasks.filter(task => task.title.toLowerCase().includes(search.toLowerCase()));
     const numOfTasks = filteredTasks.length;
     const pageListSize = [5,10,15,20,25,30];
