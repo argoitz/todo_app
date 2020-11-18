@@ -21,8 +21,14 @@ const Header = ({tasks, pagination}) => {
         <h2>What do you want to do today?</h2>
 
         <div className="Header">
-          <input className="addInput" type="text" onKeyPress={(e) =>  handleAddInputKeyPress(e, tasks.setTasks, tasks.fullTasks) }  placeholder="Perss'Enter' to add task"></input>
-          <input className="searchInput" type="text" placeholder="Search" onKeyPress={(e) => handleSearchKeyPress(e, tasks.setSearch) } ></input>
+          <input className="addInput" type="text" 
+            onKeyPress={(e) =>  handleAddInputKeyPress(e, tasks.setTasks, tasks.fullTasks) }  
+            placeholder="Perss'Enter' to add task"
+          ></input>
+          
+          <input className="searchInput" type="text" placeholder="Search" 
+            onKeyPress={(e) => handleSearchKeyPress(e, tasks.setSearch) } 
+          ></input>
         </div>
         
         {tasks.search !== '' && <div>

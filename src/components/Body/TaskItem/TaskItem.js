@@ -14,7 +14,7 @@ function TaskItem({task, index, taskObj}){
             <input type="checkbox" defaultChecked="false" checked={ task.completed } onChange={(e) => changeTaskCompletedStatus(e, task.id,taskObj)}></input>
             <label>
                 {task.title} 
-                {task.img? <img src={task.img}></img> : undefined }
+                {task.img? <img alt="User" src={task.img}></img> : undefined }
                 {task.who? <span>{task.who}</span> : undefined } 
             </label>
         </li>

@@ -15,13 +15,21 @@ function Footer({tasks, pagination}){
 
         <div className="pagination_box">
             <div> 
-            {pagination.page > 0 && <button onClick={() => pagination.setPage(pagination.page - 1)}> Prev Page</button>}
+            {
+                pagination.page > 0 
+                && 
+                <button onClick={() => pagination.setPage(pagination.page - 1)}> Prev Page</button>
+            }
             </div>
 
             <div>{pagination.page + 1} page of {pagination.pages + 1}</div>
 
             <div>
-            {pagination.page < pagination.pages && <button onClick={() => pagination.setPage(pagination.page + 1)}>Next Page</button>}
+            {
+                pagination.page < pagination.pages 
+                && 
+                <button onClick={() => pagination.setPage(pagination.page + 1)}>Next Page</button>
+            }
             </div>
         </div>
       </>
