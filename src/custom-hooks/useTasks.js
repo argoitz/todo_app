@@ -22,11 +22,7 @@ const useTasks = () => {
         setTimeout(() => {
             getDataFromUrl()
         }, 4000);
-    }, []);
-
-    tasks === undefined || tasks.length == 0? console.log("TASKS ARE EMPTY") : console.log("TASKS ARE NOT EMPTY");
-    
-
+    }, []);    
         
     //Store searching word in localStorage
     const useLocalStorageSearch = (defaultVal, key) => {
