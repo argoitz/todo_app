@@ -16,17 +16,18 @@ let handleSearchKeyPress = (e, setSearch) => {
 }
 
 const Header = ({tasks, pagination}) => {
+  let disabled = tasks.numOfTasks === 0;
   return (
       <>
         <h2>What do you want to do today?</h2>
 
         <div className="Header">
-          <input className="addInput" type="text" 
+          <input className="addInput" type="text" disabled={disabled} 
             onKeyPress={(e) =>  handleAddInputKeyPress(e, tasks.setTasks, tasks.fullTasks) }  
             placeholder="Perss'Enter' to add task"
           ></input>
           
-          <input className="searchInput" type="text" placeholder="Search" 
+          <input className="searchInput" type="text" placeholder="Search" disabled={disabled} 
             onKeyPress={(e) => handleSearchKeyPress(e, tasks.setSearch) } 
           ></input>
         </div>
@@ -38,7 +39,7 @@ const Header = ({tasks, pagination}) => {
 
         <div className="pageSizeBox">
           <label>Page Size</label>
-          <select onChange={(e) => {pagination.setPageSize(e.target.value); pagination.setPage(0)}}>
+          <select onChange={(e) => {pagination.setPageSize(e.target.value); pagination.setPage(0)}} disabled={disabled}>
             {pagination.pageListSize.map((x) => <option value={x}>{x}</option> )}
           </select>
         </div>
