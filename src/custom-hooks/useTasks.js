@@ -5,9 +5,28 @@ const getTasks = (tasks, page, pageSize) => tasks.slice(page*pageSize, (page + 1
 
 const useTasks = () => {
     console.log("Recorriendo script");
-    const [tasks, setTasks] = useState(data.tasks);
-
+    const [tasks, setTasks] = useState([]);
     const getTasks = (tasks, page, pageSize) => tasks.slice(page*pageSize, (page + 1)*pageSize);
+
+    const getDataFromUrl = async () => {
+        try {
+            let response = await fetch('https://jsonplaceholder.typicode.com/todos');
+            let responseJson = await response.json();
+            setTasks(responseJson);
+           } catch(error) {
+            console.error(error);
+          }
+    }
+
+    useEffect(() => {
+        setTimeout(() => {
+            getDataFromUrl()
+        }, 2000);
+    }, []);
+
+    tasks === undefined || tasks.length == 0? console.log("TASKS ARE EMPTY") : console.log("TASKS ARE NOT EMPTY");
+    
+
         
     //Store searching word in localStorage
     const useLocalStorageSearch = (defaultVal, key) => {
