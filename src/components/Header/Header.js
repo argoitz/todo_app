@@ -30,12 +30,12 @@ const Header = ({tasks, pagination}) => {
             onKeyPress={(e) => handleSearchKeyPress(e, tasks.setSearch) } 
           ></input>
         </div>
-        
+
         {tasks.search !== '' && <div>
-          Searching '<b>{tasks.search}</b>' 
+          Searching '<b>{tasks.search}</b>'
           <button onClick={() => tasks.setSearch('') }>Clear</button>
         </div> }
-        
+
         <div className="pageSizeBox">
           <label>Page Size</label>
           <select onChange={(e) => {pagination.setPageSize(e.target.value); pagination.setPage(0)}}>

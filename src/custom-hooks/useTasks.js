@@ -1,13 +1,14 @@
 import { useState } from "react";
 import data from '../taskObject.json';
 
+const getTasks = (tasks, page, pageSize) => tasks.slice(page*pageSize, (page + 1)*pageSize);
+
 const useTasks = () => {
     console.log("Recorriendo script");
     const [tasks, setTasks] = useState(data.tasks);
 
     const getTasks = (tasks, page, pageSize) => tasks.slice(page*pageSize, (page + 1)*pageSize);
-      
-    
+        
     const [search, setSearch] = useState('');
     const filteredTasks = tasks.filter(task => task.title.toLowerCase().includes(search.toLowerCase()));
     const numOfTasks = filteredTasks.length;
