@@ -14,13 +14,14 @@ const useTasks = () => {
     if (page) page = "_page=" + page;
     if (limit && page) limit = limit + "&";
 
-    try {
-      let url = "https://jsonplaceholder.typicode.com/todos?" + limit + page;
-      console.log(url);
-      return await axios.get(url).then((res) => res.data);
-    } catch (error) {
-      console.error(error);
-    }
+    let url = "https://jsonplaceholder.typicode.com/todos?" + limit + page;
+    console.log(url);
+    return await axios
+      .get(url)
+      .then((res) => res.data)
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   //Store searching word in localStorage
