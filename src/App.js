@@ -1,4 +1,5 @@
 import React from "react";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "./App.scss";
 import { Header } from "./components/Header/Header";
 import TaskList from "./components/Body/TaskList";
@@ -14,10 +15,28 @@ function App() {
     <div className="todoBox">
       <Header tasks={tasks} pagination={pagination} />
       {tasks.numOfTasks === 0 ? (
-        <div className="LoadingBox">
-          {" "}
-          Loading data <ImSpinner9 className="spin-icon" />{" "}
-        </div>
+        <>
+          <SkeletonTheme color="#fa8072" highlightColor="#e96354">
+            <Skeleton height={40} />
+          </SkeletonTheme>
+          <Skeleton height={50} count={5} />
+          <Skeleton height={20} width={120} style={{ margin: "10px 0px" }} />
+          <Skeleton
+            height={20}
+            width={120}
+            style={{ margin: "10px 0px", float: "right" }}
+          />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <Skeleton height={20} width={120} />
+            <Skeleton height={20} width={120} />
+            <Skeleton height={20} width={120} />
+          </div>
+        </>
       ) : (
         <>
           <TaskOverWorkWarning tasks={tasks.fullTasks} />
