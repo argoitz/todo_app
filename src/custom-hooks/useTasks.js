@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 
 const useTasks = () => {
+  const axios = require("axios");
+
   console.log("########### \n Runing Script \n########### \n");
   const [tasks, setTasks] = useState([]);
 
   const getTasks = (tasks, page, pageSize) =>
     tasks.slice(page * pageSize, (page + 1) * pageSize);
 
-  const getDataFromUrl = async (page = null, limit = null) => {
+  const getDataFromUrl = async (page = "", limit = "") => {
     if (limit) limit = "_limit=" + limit;
     if (page) page = "_page=" + page;
     if (limit && page) limit = limit + "&";
@@ -15,8 +17,7 @@ const useTasks = () => {
     try {
       let url = "https://jsonplaceholder.typicode.com/todos?" + limit + page;
       console.log(url);
-      let response = await fetch(url);
-      return await response.json();
+      return await axios.get(url).then((res) => res.data);
     } catch (error) {
       console.error(error);
     }
