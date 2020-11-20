@@ -1,16 +1,27 @@
 import { useState, useEffect } from "react";
-import data from '../taskObject.json';
-
-const getTasks = (tasks, page, pageSize) => tasks.slice(page*pageSize, (page + 1)*pageSize);
 
 const useTasks = () => {
     console.log("Recorriendo script");
     const [tasks, setTasks] = useState([]);
     const getTasks = (tasks, page, pageSize) => tasks.slice(page*pageSize, (page + 1)*pageSize);
 
-    const getDataFromUrl = async () => {
+    const getDataFromUrl = async (limit = null, page = null) => {
+            // fetch('https://jsonplaceholder.typicode.com/todos')
+            // .then((res) => {
+            //     let responseJson = res.json().then((jRes) => {
+            //         console.log();
+            //         setTasks(jRes);
+            //     });
+            // })
+        if(limit) limit = "_limit="+limit;
+        if(page) page = "_page="+page;
+        if(limit && page) limit = limit+"&";
+
         try {
-            let response = await fetch('https://jsonplaceholder.typicode.com/todos');
+            console.log("GETTING DATA");
+            let url = 'https://jsonplaceholder.typicode.com/todos?'+limit+page;
+            console.log(url);
+            let response = await fetch(url);
             let responseJson = await response.json();
             setTasks(responseJson);
            } catch(error) {
@@ -20,7 +31,7 @@ const useTasks = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            getDataFromUrl()
+            getDataFromUrl(5,2);
         }, 4000);
     }, []);    
         
