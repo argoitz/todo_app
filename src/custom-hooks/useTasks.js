@@ -64,6 +64,11 @@ const useTasks = () => {
     getDataFromUrl(page + 1, pageSize).then((res) => console.log(res));
   }, [page, pageSize]);
 
+  useEffect(() => {
+    let tasksLeft = tasks.filter((t) => !t.completed).length;
+    document.title = tasksLeft + " Tasks left";
+  }, [tasks]);
+
   return {
     tasks: {
       numOfTasks,
